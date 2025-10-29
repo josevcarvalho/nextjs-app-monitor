@@ -37,7 +37,7 @@ export default function Layout({ children }: PropsWithChildren) {
           <SidebarGroup>
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild>
+                <SidebarMenuButton asChild tooltip="Dashboard">
                   <Link href="#">
                     <Home />
                     <span>Dashboard</span>
