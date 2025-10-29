@@ -13,12 +13,7 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
-import {
-  Item,
-  ItemContent,
-  ItemDescription,
-  ItemTitle,
-} from "@/components/ui/item";
+import { Item, ItemContent, ItemMedia, ItemTitle } from "@/components/ui/item";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Spinner } from "@/components/ui/spinner";
 import {
@@ -32,6 +27,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import {
+  CircleAlert,
   CircleDashed,
   CircleMinus,
   CircleX,
@@ -43,9 +39,15 @@ import {
 export default function Home() {
   return (
     <div className="m-2">
-      <header className="flex items-center justify-between mb-4 gap-1.5 top-0 sticky bg-background/95 pt-2 pb-0.5 border-b z-10">
-        <SidebarTrigger />
-        <h1 className="text-xl font-semibold flex-1">Dashboard</h1>
+      <header className="top-0 sticky bg-background/95 border-b z-10">
+        <Item className="p-2">
+          <ItemMedia>
+            <SidebarTrigger />
+          </ItemMedia>
+          <ItemContent>
+            <ItemTitle className="text-xl font-semibold">Dashboard</ItemTitle>
+          </ItemContent>
+        </Item>
       </header>
       <div className="m-5 grid grid-cols-1 lg:grid-cols-7 gap-6">
         <Item className="lg:col-span-7 lg:hidden" variant="default">
@@ -132,8 +134,8 @@ export default function Home() {
                   <TableCell>
                     <HoverCard>
                       <HoverCardTrigger asChild>
-                        <Badge variant="destructive">
-                          <CircleX />
+                        <Badge className="bg-amber-400">
+                          <CircleAlert />
                           <span className="hidden lg:inline">
                             Falha na dependência
                           </span>
@@ -305,24 +307,10 @@ export default function Home() {
                   <TableCell>Cliente 1</TableCell>
                   <TableCell>1</TableCell>
                   <TableCell>
-                    <HoverCard>
-                      <HoverCardTrigger asChild>
-                        <Badge>
-                          <Spinner />
-                          <span className="hidden lg:inline">Processando</span>
-                        </Badge>
-                      </HoverCardTrigger>
-                      <HoverCardContent className="text-sm flex flex-col gap-2">
-                        <p>
-                          Falha ao processar o pagamento. Verifique os dados do
-                          cartão.
-                        </p>
-                        <Button size="sm" variant="outline">
-                          <RotateCcw />
-                          <span>Tentar novamente</span>
-                        </Button>
-                      </HoverCardContent>
-                    </HoverCard>
+                    <Badge>
+                      <Spinner />
+                      <span className="hidden lg:inline">Processando</span>
+                    </Badge>
                   </TableCell>
                 </TableRow>
               </TableBody>

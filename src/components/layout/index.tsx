@@ -1,4 +1,10 @@
-import { BookUser, ChevronDown, DatabaseBackup, Home } from "lucide-react";
+import {
+  BookUser,
+  ChevronDown,
+  HardDrive,
+  Home,
+  ScrollText,
+} from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -25,7 +31,7 @@ export default function Layout({ children }: PropsWithChildren) {
             <SidebarMenuItem>
               <SidebarMenuButton size="lg">
                 <div className="bg-sidebar-primary text-sidebar-primary-foreground flex aspect-square size-8 items-center justify-center rounded-lg">
-                  <DatabaseBackup className="size-4" />
+                  <HardDrive className="size-4" />
                 </div>
                 <div className="grid flex-1 text-left text-sm leading-tight">
                   <h1 className="text-lg font-bold">Monitor</h1>
@@ -78,6 +84,14 @@ export default function Layout({ children }: PropsWithChildren) {
                   <Link href="/customers">
                     <BookUser />
                     <span>Clientes</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild tooltip="Pedidos">
+                  <Link href="/orders">
+                    <ScrollText />
+                    <span>Pedidos</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
