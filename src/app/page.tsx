@@ -4,6 +4,7 @@ import {
   Card,
   CardAction,
   CardContent,
+  CardDescription,
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
@@ -26,6 +27,7 @@ import {
 } from "@/components/ui/table";
 import {
   CircleDashed,
+  CircleMinus,
   CircleX,
   RefreshCcw,
   RotateCcw,
@@ -35,14 +37,15 @@ import {
 export default function Home() {
   return (
     <div className="m-2">
-      <header className="flex items-center justify-between mb-4 gap-1.5 top-0 sticky bg-background/95 pt-2">
+      <header className="flex items-center justify-between mb-4 gap-1.5 top-0 sticky bg-background/95 pt-2 pb-0.5 border-b">
         <SidebarTrigger />
         <h1 className="text-xl font-semibold flex-1">Dashboard</h1>
       </header>
-      <div className="m-5 grid grid-cols-1 sm:grid-cols-7 gap-6">
-        <Card className="sm:col-span-4">
+      <div className="m-5 grid grid-cols-1 lg:grid-cols-7 gap-6">
+        <Card className="lg:col-span-4">
           <CardHeader>
             <CardTitle>Pedidos novos</CardTitle>
+            <CardDescription>Existem mais 10 pedidos pendentes</CardDescription>
             <CardAction>
               <Button variant="ghost" size="icon">
                 <RefreshCcw />
@@ -51,7 +54,7 @@ export default function Home() {
           </CardHeader>
           <CardContent>
             <Table>
-              <TableCaption>Atualizado há 5 minutos</TableCaption>
+              <TableCaption>Atualizado há 12 segundos</TableCaption>
               <TableHeader>
                 <TableRow>
                   <TableHead>Pedido</TableHead>
@@ -63,7 +66,7 @@ export default function Home() {
               <TableBody>
                 <TableRow>
                   <TableCell>112</TableCell>
-                  <TableCell>Cliente Grande Tres</TableCell>
+                  <TableCell>Cliente 5</TableCell>
                   <TableCell>R$ 10,00</TableCell>
                   <TableCell>
                     <Badge>
@@ -85,6 +88,17 @@ export default function Home() {
                 </TableRow>
                 <TableRow>
                   <TableCell>230</TableCell>
+                  <TableCell>Cliente 1</TableCell>
+                  <TableCell>R$ 5,00</TableCell>
+                  <TableCell>
+                    <Badge variant="secondary">
+                      <CircleMinus />
+                      <span>Aguardando dependência</span>
+                    </Badge>
+                  </TableCell>
+                </TableRow>
+                <TableRow>
+                  <TableCell>230</TableCell>
                   <TableCell>Cliente 3</TableCell>
                   <TableCell>R$ 5,00</TableCell>
                   <TableCell>
@@ -92,7 +106,7 @@ export default function Home() {
                       <HoverCardTrigger asChild>
                         <Badge variant="destructive">
                           <CircleX />
-                          <span>Erro</span>
+                          <span>Falha na dependência</span>
                         </Badge>
                       </HoverCardTrigger>
                       <HoverCardContent className="text-sm flex flex-col gap-2">
@@ -112,7 +126,7 @@ export default function Home() {
               <TableFooter>
                 <TableRow>
                   <TableCell colSpan={2}>Total</TableCell>
-                  <TableCell>R$ 15,00</TableCell>
+                  <TableCell>R$ 20,00</TableCell>
                   <TableCell />
                 </TableRow>
               </TableFooter>
@@ -120,9 +134,12 @@ export default function Home() {
           </CardContent>
         </Card>
 
-        <Card className="sm:col-span-3">
+        <Card className="lg:col-span-3">
           <CardHeader>
             <CardTitle>Ultimos pedidos processados</CardTitle>
+            <CardDescription>
+              30 pedidos processados na ultima hora
+            </CardDescription>
             <CardAction>
               <Button variant="ghost" size="icon">
                 <RefreshCcw />
@@ -131,7 +148,7 @@ export default function Home() {
           </CardHeader>
           <CardContent>
             <Table>
-              <TableCaption>Atualizado há 10 minutos</TableCaption>
+              <TableCaption>Atualizado há 4 segundos</TableCaption>
               <TableHeader>
                 <TableRow>
                   <TableHead>Pedido</TableHead>
@@ -161,9 +178,10 @@ export default function Home() {
           </CardContent>
         </Card>
 
-        <Card className="sm:col-span-3">
+        <Card className="lg:col-span-3">
           <CardHeader>
             <CardTitle>Ultimos clientes processados</CardTitle>
+            <CardDescription>Existem mais 7 clientes pendentes</CardDescription>
             <CardAction>
               <Button variant="ghost" size="icon">
                 <RefreshCcw />
@@ -172,7 +190,7 @@ export default function Home() {
           </CardHeader>
           <CardContent>
             <Table>
-              <TableCaption>Atualizado há 10 minutos</TableCaption>
+              <TableCaption>Atualizado há 10 segundos</TableCaption>
               <TableHeader>
                 <TableRow>
                   <TableHead>Cliente</TableHead>
@@ -183,7 +201,7 @@ export default function Home() {
               <TableBody>
                 <TableRow>
                   <TableCell>123</TableCell>
-                  <TableCell>Cliente 3</TableCell>
+                  <TableCell>Cliente 5</TableCell>
                   <TableCell>5</TableCell>
                 </TableRow>
                 <TableRow>
@@ -192,13 +210,24 @@ export default function Home() {
                   <TableCell>3</TableCell>
                 </TableRow>
               </TableBody>
+              <TableFooter>
+                <TableRow>
+                  <TableCell>Total</TableCell>
+                  <TableCell></TableCell>
+                  <TableCell>8</TableCell>
+                  <TableCell></TableCell>
+                </TableRow>
+              </TableFooter>
             </Table>
           </CardContent>
         </Card>
 
-        <Card className="sm:col-span-4">
+        <Card className="lg:col-span-4">
           <CardHeader>
             <CardTitle>Clientes novos</CardTitle>
+            <CardDescription>
+              18 clientes processados na ultima hora
+            </CardDescription>
             <CardAction>
               <Button variant="ghost" size="icon">
                 <RefreshCcw />
@@ -207,7 +236,7 @@ export default function Home() {
           </CardHeader>
           <CardContent>
             <Table>
-              <TableCaption>Atualizado há 10 minutos</TableCaption>
+              <TableCaption>Atualizado há 7 segundos</TableCaption>
               <TableHeader>
                 <TableRow>
                   <TableHead>Cliente</TableHead>
@@ -244,14 +273,14 @@ export default function Home() {
                 </TableRow>
                 <TableRow>
                   <TableCell>124</TableCell>
-                  <TableCell>Cliente 2</TableCell>
+                  <TableCell>Cliente 1</TableCell>
                   <TableCell>1</TableCell>
                   <TableCell>
                     <HoverCard>
                       <HoverCardTrigger asChild>
-                        <Badge variant="destructive">
-                          <CircleX />
-                          <span>Erro</span>
+                        <Badge>
+                          <Spinner />
+                          <span>Processando</span>
                         </Badge>
                       </HoverCardTrigger>
                       <HoverCardContent className="text-sm flex flex-col gap-2">
@@ -268,6 +297,14 @@ export default function Home() {
                   </TableCell>
                 </TableRow>
               </TableBody>
+              <TableFooter>
+                <TableRow>
+                  <TableCell>Total</TableCell>
+                  <TableCell></TableCell>
+                  <TableCell>8</TableCell>
+                  <TableCell></TableCell>
+                </TableRow>
+              </TableFooter>
             </Table>
           </CardContent>
         </Card>
