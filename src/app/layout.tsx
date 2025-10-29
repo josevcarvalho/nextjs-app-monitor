@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { Merriweather_Sans } from "next/font/google";
 import "./globals.css";
 import Layout from "@/components/layout";
-import { ThemeProvider } from "@/lib/themes/provider";
+import { ThemeProvider } from "@/components/layout/theme-provider";
 
 const merriweatherSans = Merriweather_Sans({
   variable: "--font-merriweather-sans",
