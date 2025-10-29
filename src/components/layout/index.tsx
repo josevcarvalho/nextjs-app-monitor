@@ -9,9 +9,11 @@ import {
   SidebarProvider,
   SidebarInset,
   SidebarGroup,
+  SidebarFooter,
 } from "../ui/sidebar";
 import { PropsWithChildren } from "react";
 import Link from "next/link";
+import { ThemeToggle } from "./theme-toggle";
 
 export default function Layout({ children }: PropsWithChildren) {
   return (
@@ -45,6 +47,13 @@ export default function Layout({ children }: PropsWithChildren) {
             </SidebarMenu>
           </SidebarGroup>
         </SidebarContent>
+        <SidebarFooter>
+          <SidebarMenu>
+            <SidebarMenuItem>
+              <ThemeToggle />
+            </SidebarMenuItem>
+          </SidebarMenu>
+        </SidebarFooter>
       </Sidebar>
       <SidebarInset>
         <main>{children}</main>

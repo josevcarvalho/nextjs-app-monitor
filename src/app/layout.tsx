@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Merriweather_Sans } from "next/font/google";
 import "./globals.css";
 import Layout from "@/components/layout";
+import { ThemeProvider } from "@/lib/themes/provider";
 
 const merriweatherSans = Merriweather_Sans({
   variable: "--font-merriweather-sans",
@@ -19,11 +20,18 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR">
+    <html lang="pt-BR" suppressHydrationWarning>
       <body
         className={`${merriweatherSans.className} ${merriweatherSans.variable} antialiased `}
       >
-        <Layout>{children}</Layout>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Layout>{children}</Layout>
+        </ThemeProvider>
       </body>
     </html>
   );
