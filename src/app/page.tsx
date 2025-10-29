@@ -13,6 +13,12 @@ import {
   HoverCardContent,
   HoverCardTrigger,
 } from "@/components/ui/hover-card";
+import {
+  Item,
+  ItemContent,
+  ItemDescription,
+  ItemTitle,
+} from "@/components/ui/item";
 import { SidebarTrigger } from "@/components/ui/sidebar";
 import { Spinner } from "@/components/ui/spinner";
 import {
@@ -37,11 +43,31 @@ import {
 export default function Home() {
   return (
     <div className="m-2">
-      <header className="flex items-center justify-between mb-4 gap-1.5 top-0 sticky bg-background/95 pt-2 pb-0.5 border-b">
+      <header className="flex items-center justify-between mb-4 gap-1.5 top-0 sticky bg-background/95 pt-2 pb-0.5 border-b z-10">
         <SidebarTrigger />
         <h1 className="text-xl font-semibold flex-1">Dashboard</h1>
       </header>
       <div className="m-5 grid grid-cols-1 lg:grid-cols-7 gap-6">
+        <Item className="lg:col-span-7 lg:hidden" variant="default">
+          <ItemContent className="flex flex-row flex-wrap gap-2">
+            <Badge variant="secondary">
+              <CircleDashed />
+              <span>Pendente</span>
+            </Badge>
+            <Badge>
+              <Spinner />
+              <span>Processando</span>
+            </Badge>
+            <Badge variant="secondary">
+              <CircleMinus />
+              <span>Aguardando dependência</span>
+            </Badge>
+            <Badge variant="destructive">
+              <CircleX />
+              <span>Erro</span>
+            </Badge>
+          </ItemContent>
+        </Item>
         <Card className="lg:col-span-4">
           <CardHeader>
             <CardTitle>Pedidos novos</CardTitle>
@@ -71,7 +97,7 @@ export default function Home() {
                   <TableCell>
                     <Badge>
                       <Spinner />
-                      <span>Processando</span>
+                      <span className="hidden lg:inline">Processando</span>
                     </Badge>
                   </TableCell>
                 </TableRow>
@@ -82,7 +108,7 @@ export default function Home() {
                   <TableCell>
                     <Badge variant="secondary">
                       <CircleDashed />
-                      <span>Pendente</span>
+                      <span className="hidden lg:inline">Pendente</span>
                     </Badge>
                   </TableCell>
                 </TableRow>
@@ -93,7 +119,9 @@ export default function Home() {
                   <TableCell>
                     <Badge variant="secondary">
                       <CircleMinus />
-                      <span>Aguardando dependência</span>
+                      <span className="hidden lg:inline">
+                        Aguardando dependência
+                      </span>
                     </Badge>
                   </TableCell>
                 </TableRow>
@@ -106,7 +134,9 @@ export default function Home() {
                       <HoverCardTrigger asChild>
                         <Badge variant="destructive">
                           <CircleX />
-                          <span>Falha na dependência</span>
+                          <span className="hidden lg:inline">
+                            Falha na dependência
+                          </span>
                         </Badge>
                       </HoverCardTrigger>
                       <HoverCardContent className="text-sm flex flex-col gap-2">
@@ -195,7 +225,7 @@ export default function Home() {
                 <TableRow>
                   <TableHead>Cliente</TableHead>
                   <TableHead>Nome</TableHead>
-                  <TableHead>Qtd. Pedidos</TableHead>
+                  <TableHead>Pedidos</TableHead>
                 </TableRow>
               </TableHeader>
               <TableBody>
@@ -221,7 +251,6 @@ export default function Home() {
             </Table>
           </CardContent>
         </Card>
-
         <Card className="lg:col-span-4">
           <CardHeader>
             <CardTitle>Clientes novos</CardTitle>
@@ -241,7 +270,7 @@ export default function Home() {
                 <TableRow>
                   <TableHead>Cliente</TableHead>
                   <TableHead>Nome</TableHead>
-                  <TableHead>Qtd. Pedidos</TableHead>
+                  <TableHead>Pedidos</TableHead>
                   <TableHead>Status</TableHead>
                 </TableRow>
               </TableHeader>
@@ -255,7 +284,7 @@ export default function Home() {
                       <HoverCardTrigger asChild>
                         <Badge variant="destructive">
                           <CircleX />
-                          <span>Erro</span>
+                          <span className="hidden lg:inline">Erro</span>
                         </Badge>
                       </HoverCardTrigger>
                       <HoverCardContent className="text-sm flex flex-col gap-2">
@@ -280,7 +309,7 @@ export default function Home() {
                       <HoverCardTrigger asChild>
                         <Badge>
                           <Spinner />
-                          <span>Processando</span>
+                          <span className="hidden lg:inline">Processando</span>
                         </Badge>
                       </HoverCardTrigger>
                       <HoverCardContent className="text-sm flex flex-col gap-2">

@@ -1,4 +1,4 @@
-import { DatabaseBackup, Home } from "lucide-react";
+import { BookUser, ChevronDown, DatabaseBackup, Home } from "lucide-react";
 import {
   Sidebar,
   SidebarContent,
@@ -10,6 +10,7 @@ import {
   SidebarInset,
   SidebarGroup,
   SidebarFooter,
+  SidebarGroupLabel,
 } from "../ui/sidebar";
 import { PropsWithChildren } from "react";
 import Link from "next/link";
@@ -34,13 +35,49 @@ export default function Layout({ children }: PropsWithChildren) {
           </SidebarMenu>
         </SidebarHeader>
         <SidebarContent>
+          {/* <Collapsible defaultOpen className="group/collapsible"> */}
+          <SidebarGroup>
+            <SidebarGroupLabel>
+              {/* <CollapsibleTrigger> */}
+              Recentes
+              <ChevronDown className="ml-auto transition-transform group-data-[state=open]/collapsible:rotate-180" />
+              {/* </CollapsibleTrigger> */}
+            </SidebarGroupLabel>
+            <SidebarMenu>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild tooltip="Dashboard">
+                  <Link href="/">
+                    <Home />
+                    <span>Dashboard</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild tooltip="Clientes">
+                  <Link href="/customers">
+                    <BookUser />
+                    <span>Clientes</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+            </SidebarMenu>
+          </SidebarGroup>
+          {/* </Collapsible> */}
           <SidebarGroup>
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild tooltip="Dashboard">
-                  <Link href="#">
+                  <Link href="/">
                     <Home />
                     <span>Dashboard</span>
+                  </Link>
+                </SidebarMenuButton>
+              </SidebarMenuItem>
+              <SidebarMenuItem>
+                <SidebarMenuButton asChild tooltip="Clientes">
+                  <Link href="/customers">
+                    <BookUser />
+                    <span>Clientes</span>
                   </Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
