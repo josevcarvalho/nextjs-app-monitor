@@ -39,9 +39,6 @@ jobs:
       - name: Build Next.js application
         run: bun run build
 
-      - name: Export static site
-        run: bun run export
-
       - name: Add .nojekyll
         run: |
           mkdir -p out
