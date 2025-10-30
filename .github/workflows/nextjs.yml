@@ -1,21 +1,37 @@
-name: Deploy Next.js with Bun to GitHub Pages
+name: Deploy Next.js to GitHub Pages
 
 on:
   push:
     branches:
       - main
 
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "pages"
+  cancel-in-progress: true
+
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
+    env:
+      # Base path for project pages: https://josevcarvalho.github.io/nextjs-app-monitor
+      BASE_PATH: /nextjs-app-monitor
+      NEXT_TELEMETRY_DISABLED: 1
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
+      - name: Setup GitHub Pages
+        uses: actions/configure-pages@v5
+
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
         with:
-          bun-version: latest 
+          bun-version: latest
 
       - name: Install dependencies
         run: bun install
@@ -23,16 +39,21 @@ jobs:
       - name: Build Next.js application
         run: bun run build
 
-      - name: Export Next.js application (static)
-        run: bun run start
+      - name: Export static site
+        run: bun run export
+
+      - name: Add .nojekyll
+        run: |
+          mkdir -p out
+          touch out/.nojekyll
 
       - name: Upload artifact for GitHub Pages
         uses: actions/upload-pages-artifact@v3
         with:
-          path: ./out 
+          path: ./out
 
-  deploy-pages:
-    needs: build-and-deploy
+  deploy:
+    needs: build
     runs-on: ubuntu-latest
     environment:
       name: github-pages
